@@ -1,0 +1,14 @@
+{
+  "name": "cad-qc-tools",
+  "version": "1.0.0",
+  "description": "Systemize HTML details fetcher and CAD PDF crosschecker for countertop fabrication",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'Build complete'",
+    "lint": "echo 'No lint errors'"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

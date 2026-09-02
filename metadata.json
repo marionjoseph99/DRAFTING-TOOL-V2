@@ -1,0 +1,8 @@
+{
+  "name": "CAD QC Tools",
+  "description": "Systemize HTML details fetcher and CAD PDF crosschecker for countertop fabrication",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
