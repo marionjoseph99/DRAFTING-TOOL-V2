@@ -1,0 +1,248 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, Arial, sans-serif;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  color: #1f2937;
+}
+
+* { box-sizing: border-box; }
+
+.page-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  background: #0f172a;
+  color: white;
+  padding: 20px 26px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+}
+
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-wrap i {
+  font-size: 2rem;
+  color: #60a5fa;
+}
+
+.brand-wrap h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.brand-wrap p {
+  margin: 4px 0 0;
+  color: #bfdbfe;
+  font-size: 0.85rem;
+}
+
+.back-link {
+  color: white;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.content-card {
+  margin-top: 28px;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(148,163,184,0.25);
+  border-radius: 22px;
+  padding: 26px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.1);
+}
+
+.status-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.status-pill,
+.summary-box {
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+}
+
+.status-pill.neutral {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.status-pill.success {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-pill.warning {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-pill.error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.summary-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 8px 12px;
+  color: #475569;
+}
+
+.upload-box {
+  position: relative;
+  border: 2px dashed #cbd5e1;
+  background: #f8fafc;
+  border-radius: 18px;
+  padding: 30px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.upload-box:hover,
+.upload-box.drag-over {
+  border-color: #60a5fa;
+  background: #f0f9ff;
+}
+
+.upload-box input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.upload-inner {
+  pointer-events: none;
+}
+
+.upload-inner i {
+  font-size: 3rem;
+  color: #f97316;
+  margin-bottom: 12px;
+}
+
+.upload-inner h2 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+}
+
+.upload-inner p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.primary-btn,
+.secondary-btn {
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: transform 0.15s ease;
+}
+
+.primary-btn {
+  background: #2563eb;
+  color: white;
+  padding: 12px 30px;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
+}
+
+.secondary-btn {
+  background: white;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  padding: 8px 14px;
+}
+
+.secondary-btn.subtle {
+  background: #f8fafc;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover {
+  transform: translateY(-1px);
+}
+
+.result-box {
+  margin-top: 24px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  background: #eff6ff;
+  border-bottom: 1px solid #dbeafe;
+}
+
+.result-header h3 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+
+.result-header small {
+  color: #475569;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#extracted-text-area {
+  width: 100%;
+  min-height: 480px;
+  border: none;
+  resize: vertical;
+  background: #f8fafc;
+  padding: 18px;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #0f172a;
+}
+
+.hidden { display: none !important; }

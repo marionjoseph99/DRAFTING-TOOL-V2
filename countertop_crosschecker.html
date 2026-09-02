@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CAD QC Tools</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="countertop_crosschecker.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand-wrap">
+        <i class="fa-solid fa-layer-group"></i>
+        <div>
+          <h1>CAD QC Tools</h1>
+          <p>HTML fetcher and PDF crosschecker in one screen</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="tab-shell">
+      <div class="tab-nav" role="tablist" aria-label="Tool tabs">
+        <button class="tab-button active" type="button" role="tab" aria-selected="true" data-tab="fetcher">
+          <i class="fa-solid fa-file-code"></i> HTML Details Fetcher
+        </button>
+        <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab="checker">
+          <i class="fa-solid fa-code-compare"></i> PDF QC Crosschecker
+        </button>
+      </div>
+
+      <div class="tool-grid">
+        <section id="fetcher-panel" class="tool-panel tab-panel active fetcher-panel" role="tabpanel">
+          <div class="panel-header">
+            <h2><i class="fa-solid fa-file-code"></i> HTML Details Fetcher</h2>
+          </div>
+
+          <div class="status-bar">
+            <div id="fetcher-status" class="status-pill neutral">Waiting for HTML</div>
+            <div id="fetcher-summary" class="summary-box">Upload a Systemize HTML file to begin.</div>
+          </div>
+
+          <div class="upload-box" id="fetcher-upload-box">
+            <input type="file" id="html-upload" accept=".html" />
+            <div class="upload-inner">
+              <i class="fa-brands fa-html5"></i>
+              <h3 id="html-filename">Upload Systemize HTML</h3>
+              <p>Required to extract the job details block</p>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button id="btn-fetch" class="primary-btn hidden">Extract CAD Details</button>
+            <button id="btn-reset-fetcher" class="secondary-btn subtle">Reset</button>
+          </div>
+
+          <div id="fetcher-results" class="result-box hidden">
+            <div class="result-header">
+              <div>
+                <h3>Extracted CAD Block Data</h3>
+                <small id="fetcher-field-summary">Ready</small>
+              </div>
+              <div class="header-actions">
+                <button id="btn-copy" class="secondary-btn">Copy All</button>
+                <button id="btn-download" class="secondary-btn">Download .txt</button>
+              </div>
+            </div>
+            <div id="extracted-field-list" class="field-list"></div>
+            <textarea id="extracted-text-area" readonly style="display:none;"></textarea>
+          </div>
+        </section>
+
+        <section id="checker-panel" class="tool-panel tab-panel checker-panel" role="tabpanel" hidden>
+          <div class="panel-header">
+            <h2><i class="fa-solid fa-code-compare"></i> PDF QC Crosschecker</h2>
+          </div>
+
+          <div class="status-bar">
+            <div id="checker-status" class="status-pill neutral">Waiting for files</div>
+            <div id="checker-summary" class="summary-box">Upload both an HTML and a PDF file to compare.</div>
+          </div>
+
+          <div class="upload-grid">
+            <div class="upload-box small" id="html-checker-box">
+              <input type="file" id="checker-html-upload" accept=".html" />
+              <div class="upload-inner">
+                <i class="fa-brands fa-html5"></i>
+                <h3 id="checker-html-filename">Upload HTML</h3>
+              </div>
+            </div>
+
+            <div class="upload-box small" id="pdf-upload-box">
+              <input type="file" id="pdf-upload" accept=".pdf" />
+              <div class="upload-inner">
+                <i class="fa-solid fa-file-pdf"></i>
+                <h3 id="pdf-filename">Upload PDF</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button id="btn-crosscheck" class="primary-btn hidden">Run Crosscheck</button>
+            <button id="btn-reset-checker" class="secondary-btn subtle">Reset</button>
+          </div>
+
+          <div id="processing-state" class="processing hidden">Processing documents...</div>
+
+          <div id="results-container" class="result-box hidden">
+            <div class="result-header">
+              <h3>Crosscheck Results</h3>
+              <span id="status-badge" class="status-pill neutral">Pending</span>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Detail</th>
+                    <th>HTML</th>
+                    <th>PDF</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="results-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="countertop_crosschecker.js"></script>
+</body>
+</html>
